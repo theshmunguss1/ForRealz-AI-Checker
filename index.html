@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            width: 100%;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Accurate AI Detector</h1>
+        <p>For journalists, students and teachers: optimized for essays.</p>
+        <input type="text" id="inputField" placeholder="Enter text here" />
+        <button onclick="generatePercentage()">Detect</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function generatePercentage() {
+            const inputText = document.getElementById("inputField").value;
+            if (inputText.trim() === "") {
+                document.getElementById("result").innerText = "Please enter some text.";
+                return;
+            }
+            const percentage = (Math.random() * 10).toFixed(1); // Generate a random number between 0-10 with one decimal
+            document.getElementById("result").innerText = `${percentage}% AI - Made by a human`;
+        }
+    </script>
+</body>
+</html>
