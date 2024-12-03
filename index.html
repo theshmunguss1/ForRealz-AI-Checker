@@ -25,6 +25,10 @@
             font-size: 20px;
             color: #333;
         }
+        .loading {
+            font-size: 20px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -39,12 +43,25 @@
     <script>
         function generatePercentage() {
             const inputText = document.getElementById("inputField").value;
+            const resultDiv = document.getElementById("result");
+
             if (inputText.trim() === "") {
-                document.getElementById("result").innerText = "Please enter some text.";
+                resultDiv.innerText = "Please enter some text.";
                 return;
             }
-            const percentage = (Math.random() * 10).toFixed(0); // Generate a random number between 0-10
-            document.getElementById("result").innerText = `${percentage}% AI - Made by a human`;
+
+            // Count the words in the input text
+            const wordCount = inputText.trim().split(/\s+/).length;
+            const delay = wordCount * 200; // 0.2 seconds per word (200 milliseconds)
+
+            // Show a loading animation
+            resultDiv.innerHTML = '<span class="loading">Analyzing...</span>';
+
+            // Simulate a delay based on the word count
+            setTimeout(() => {
+                const percentage = (Math.random() * 10).toFixed(0); // Generate a random number between 0-10
+                resultDiv.innerHTML = `${percentage}% AI - Made by a human`;
+            }, delay);
         }
     </script>
 </body>
